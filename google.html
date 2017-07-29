@@ -23,7 +23,7 @@
     }).then(function () {
       GoogleAuth = gapi.auth2.getAuthInstance();
       window.g = GoogleAuth;
-      console.log(GoogleAuth);
+      console.log(window.g.currentUser.get().getAuthResponse().id_token);
       // Listen for sign-in state changes.
       GoogleAuth.isSignedIn.listen(updateSigninStatus);
 
