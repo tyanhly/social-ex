@@ -1,3 +1,4 @@
+
 <script>
   var GoogleAuth;
   var SCOPE = 'https://www.googleapis.com/auth/drive.metadata.readonly';
@@ -24,6 +25,7 @@
       GoogleAuth = gapi.auth2.getAuthInstance();
       window.g = GoogleAuth;
       console.log(window.g.currentUser.get().getAuthResponse().id_token);
+      document.getElementById('token').innerHTML = window.g.currentUser.get().getAuthResponse().id_token
       // Listen for sign-in state changes.
       GoogleAuth.isSignedIn.listen(updateSigninStatus);
 
@@ -89,3 +91,6 @@
         onload="this.onload=function(){};handleClientLoad()" 
         onreadystatechange="if (this.readyState === 'complete') this.onload()">
 </script>
+
+<h3>TOKEN:</h3>
+<div id='token'></div>
