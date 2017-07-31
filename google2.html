@@ -26,7 +26,6 @@
       document.getElementById('token').innerHTML = GoogleAuth.currentUser.get().getAuthResponse().id_token
       // Listen for sign-in state changes.
       GoogleAuth.isSignedIn.listen(updateSigninStatus);
-      GoogleAuth.grantOfflineAccess().then(updateCode);
       // Handle initial sign-in state. (Determine if user is already signed in.)
       var user = GoogleAuth.currentUser.get();
       setSigninStatus();
@@ -48,6 +47,7 @@
       GoogleAuth.signOut();
     } else {
       // User is not signed in. Start Google auth flow.
+      GoogleAuth.grantOfflineAccess().then(updateCode);
       GoogleAuth.signIn();
     }
   }
