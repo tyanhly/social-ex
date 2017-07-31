@@ -41,8 +41,8 @@ function signInCallback(authResult) {
 
     // Hide the sign-in button now that the user is authorized, for example:
     $('#signinButton').attr('style', 'display: none');
-    document.getElementById('token').innerHTML = authResult['code'];
-      
+    document.getElementById('code').innerHTML = authResult['code'];
+    window.authResult = authResult;
     
   } else {
     // There was an error.
