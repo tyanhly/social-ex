@@ -23,8 +23,6 @@
         'scope': SCOPE
     }).then(function () {
       GoogleAuth = gapi.auth2.getAuthInstance();
-      window.g = GoogleAuth;
-      console.log(window.g.currentUser.get().getAuthResponse().id_token);
       document.getElementById('token').innerHTML = window.g.currentUser.get().getAuthResponse().id_token
       // Listen for sign-in state changes.
       GoogleAuth.isSignedIn.listen(updateSigninStatus);
@@ -60,12 +58,16 @@
 
   function setSigninStatus(isSignedIn) {
     var user = GoogleAuth.currentUser.get();
+
     var isAuthorized = user.hasGrantedScopes(SCOPE);
     if (isAuthorized) {
       $('#sign-in-or-out-button').html('Sign out');
       $('#revoke-access-button').css('display', 'inline-block');
       $('#auth-status').html('You are currently signed in and have granted ' +
           'access to this app.');
+      window.g = GoogleAuth;
+      console.log(window.g.currentUser.get().getAuthResponse().id_token);
+      
     } else {
       $('#sign-in-or-out-button').html('Sign In/Authorize');
       $('#revoke-access-button').css('display', 'none');
