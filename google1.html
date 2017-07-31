@@ -79,10 +79,11 @@
   }
 
   function signInCallback(authResult) {
-  if (authResult['code']) {
-     document.getElementById('code').innerHTML(authResult['code']);
-  } else {
-    console.log('authResult: eerror');
+    if (authResult['code']) {
+       document.getElementById('code').innerHTML(authResult['code']);
+    } else {
+      console.log('authResult: eerror');
+    }
   }
 </script>
 
