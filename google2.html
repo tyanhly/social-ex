@@ -1,0 +1,36 @@
+<!-- The top of file index.html -->
+<html itemscope itemtype="http://schema.org/Article">
+<head>
+  <!-- BEGIN Pre-requisites -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
+  </script>
+  <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer>
+  </script>
+  <!-- END Pre-requisites -->
+
+  <!-- Continuing the <head> section -->
+  <script>
+    function start() {
+      
+      gapi.auth2.authorize({
+        client_id: '425093722529-osu64hsitktoj9f691u7htp1kdr38dsc.apps.googleusercontent.com',
+        scope: 'email profile openid',
+        response_type: 'id_token permission'
+      }, function(response) {
+        window.res = response;
+        if (response.error) {
+          // An error happened!
+          return;
+        }
+        // The user authorized the application for the scopes requested.
+        var accessToken = response.access_token;
+        var idToken = response.id_token;
+        // You can also now use gapi.client to perform authenticated requests.
+      });
+    }
+  </script>
+</head>
+<body>
+
+</body>
+</html>
